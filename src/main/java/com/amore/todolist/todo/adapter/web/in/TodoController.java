@@ -53,7 +53,7 @@ public class TodoController {
     }
 
     @GetMapping("/todos")
-    public CommonResponse<List<TodoQuery>> findTodos(TodoQueryFilterRequest request) {
+    public CommonResponse<List<TodoQuery>> findTodos(@Valid TodoQueryFilterRequest request) {
         return CommonResponse.ok(todoQueryService.findTodos(request.convertTo()));
     }
 

@@ -5,15 +5,11 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum Priority implements CommonCode{
+public enum SortType implements CommonCode {
 
-    S("S", "S", 0L),
-    A("A", "A", 1L),
-    B("B", "B", 2L),
-    C("C", "C", 3L),
-    D("D", "D", 4L);
+    PRIORITY("PRIORITY", "중요도"),
+    ORDER("ORDER", "우선순위");
 
     private String code;
     private String desc;
-    private Long order;
 }

@@ -9,6 +9,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -32,12 +33,14 @@ public class Todo {
     private TodoAssign todoAssign;
 
     public void update(UpdateTodoCommand command) {
-        if (!task.equals(command.getTask())) {
+        if (Objects.equals(task, command.getTask())) {
             task = command.getTask();
         }
-        if (!description.equals(command.getDescription())) {
+
+        if (Objects.equals(description, command.getDescription())) {
             description = command.getDescription();
         }
+
         if (priority != command.getPriority()) {
             priority = command.getPriority();
         }

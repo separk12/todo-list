@@ -18,8 +18,6 @@ public class TodoQuery {
     private String user;
     private String status;
     private LocalDate executionDay;
-    private Long assignerTodoNid;
-    private Long assigneeTodoNid;
 
     public static TodoQuery of(Todo todo) {
         String user = null;
@@ -43,8 +41,6 @@ public class TodoQuery {
                 .user(user)
                 .status(todo.getStatus().getDesc())
                 .priorityOrder(todo.getPriority().getCode() + todo.getOrder())
-                .assignerTodoNid(todo.getTodoAssign() != null ? todo.getTodoAssign().getAssignerTodoNid() : null)
-                .assigneeTodoNid(todo.getTodoAssign() != null ? todo.getTodoAssign().getAssigneeTodoNid() : null)
                 .build();
     }
 }

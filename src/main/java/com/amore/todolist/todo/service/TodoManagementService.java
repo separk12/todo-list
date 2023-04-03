@@ -76,6 +76,7 @@ public class TodoManagementService {
     public void deleteTodo(Long todoNid) {
         Todo savedTodo = todoRepository.findById(todoNid).orElseThrow(() -> CustomException.of(ExceptionType.NOT_FOUND_TODO));
         List<Todo> todoList = todoRepository.findByUserNidAndPriority(savedTodo.getUser().getUserNid(), savedTodo.getExecutionDay(), savedTodo.getPriority());
+        //삭제 후 중요도 정렬
         List<Todo> updateList = todoList.stream()
                 .filter(it -> it.getOrder() > savedTodo.getOrder())
                 .collect(Collectors.toList());
@@ -98,6 +99,10 @@ public class TodoManagementService {
                 .orElseThrow(() -> CustomException.of(ExceptionType.NOT_FOUND_TODO));
 
         if (savedTodo.getTodoAssign() != null) {
+            throw CustomException.of(ExceptionType.ALREADY_ASSIGN_TODO);
+        }
+
+        if (savedTodo.getUser().getUserNid().equals(command.getAssigneeUserNid())) {
             throw CustomException.of(ExceptionType.DISABLED_ASSIGN_TODO);
         }
 

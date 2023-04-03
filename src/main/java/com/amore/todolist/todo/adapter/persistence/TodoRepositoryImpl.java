@@ -2,7 +2,6 @@ package com.amore.todolist.todo.adapter.persistence;
 
 
 import com.amore.todolist.common.code.Priority;
-import com.amore.todolist.common.store.IdGenerator;
 import com.amore.todolist.todo.domain.Todo;
 import com.amore.todolist.todo.service.model.TodoQueryFilter;
 import lombok.RequiredArgsConstructor;
@@ -18,13 +17,16 @@ import java.util.stream.Collectors;
 public class TodoRepositoryImpl implements TodoRepository {
 
     private static final Map<Long, Todo> store = new ConcurrentHashMap<>();
-    private final IdGenerator idGenerator;
+    private static long nid = 0L;
 
+    public synchronized Long nextId() {
+        return ++nid;
+    }
     @Override
     public Todo save(Todo todo) {
-        Long id = idGenerator.nextId();
-        todo.setTodoNid(id);
-        store.put(id, todo);
+        Long nextId = nextId();
+        todo.setTodoNid(nextId);
+        store.put(nextId, todo);
         return todo;
     }
 
@@ -41,6 +43,7 @@ public class TodoRepositoryImpl implements TodoRepository {
 
     @Override
     public List<Todo> findTodos(TodoQueryFilter filter) {
+
         return store.values().stream()
                 .filter(it -> it.getUser().getUserNid().equals(filter.getUserNid()))
                 .filter(it -> it.getExecutionDay().isEqual(filter.getExecutionDay()))

@@ -1,5 +1,6 @@
 package com.amore.todolist.todo.service.model;
 
+import com.amore.todolist.common.code.SortType;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -11,6 +12,6 @@ public class TodoQueryFilter {
 
     private Long userNid;
     private LocalDate executionDay;
-    private String sort;
+    private SortType sorType;
 
 }
