@@ -15,22 +15,22 @@ public class TodoQuery {
     private String task;
     private String description;
     private String priorityOrder;
-    private String user;
+    private String userName;
     private String status;
     private LocalDate executionDay;
 
     public static TodoQuery of(Todo todo) {
-        String user = null;
+        String userName = null;
         if (todo.getStatus() == Status.ASSIGN) {
             // 위임한사람
             if (todo.getUser().getUserNid().equals(todo.getTodoAssign().getAssignerUser().getUserNid())) {
-                user = Status.ASSIGN.getDesc() + "(" + todo.getTodoAssign().getAssigneeUser().getName() + ")";
+                userName = Status.ASSIGN.getDesc() + "(" + todo.getTodoAssign().getAssigneeUser().getName() + ")";
             // 위임받은사람
             } else if (todo.getUser().getUserNid().equals(todo.getTodoAssign().getAssigneeUser().getUserNid())) {
-                user = Status.ASSIGN.getDesc() + "(" + todo.getTodoAssign().getAssignerUser().getName() + ")";
+                userName = Status.ASSIGN.getDesc() + "(" + todo.getTodoAssign().getAssignerUser().getName() + ")";
             }
         } else {
-            user = todo.getUser().getName();
+            userName = todo.getUser().getName();
         }
 
         return TodoQuery.builder()
@@ -38,7 +38,7 @@ public class TodoQuery {
                 .task(todo.getTask())
                 .description(todo.getDescription())
                 .executionDay(todo.getExecutionDay())
-                .user(user)
+                .userName(userName)
                 .status(todo.getStatus().getDesc())
                 .priorityOrder(todo.getPriority().getCode() + todo.getOrder())
                 .build();

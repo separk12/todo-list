@@ -1,0 +1,182 @@
+= TODO API
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 3
+:sectlinks:
+:sectnums:
+
+Todo-list api 문서
+
+= User
+== [small]#전체 사용자 조회#
+
+[red big]#Overview#
+
+----
+초기생성된 전체 사용자 정보를 조회합니다.
+----
+
+[red big]#HTTP request#
+
+include::{snippets}/users/findUsers/http-request.adoc[]
+
+[red big]#HTTP response#
+
+include::{snippets}/users/findUsers/http-response.adoc[]
+
+[red big]#Response fields#
+
+include::{snippets}/users/findUsers/response-fields.adoc[]
+
+
+= Todos
+
+== [small]#할일 조회#
+
+[red big]#Overview#
+
+----
+특정 실행일의 특정 담당자의 할일을 조회합니다.
+----
+
+[red big]#HTTP request#
+
+include::{snippets}/todos/findTodos/http-request.adoc[]
+
+[red big]#HTTP response#
+
+include::{snippets}/todos/findTodos/http-response.adoc[]
+
+
+[red big]#Request parameters#
+
+include::{snippets}/todos/findTodos/request-parameters.adoc[]
+
+[red big]#Response fields#
+
+include::{snippets}/todos/findTodos/response-fields.adoc[]
+
+== [small]#할일 생성#
+
+[red big]#Overview#
+
+----
+할일을 생성합니다.
+----
+
+[red big]#HTTP request#
+
+include::{snippets}/todos/createTodo/http-request.adoc[]
+
+[red big]#HTTP response#
+
+include::{snippets}/todos/createTodo/http-response.adoc[]
+
+[red big]#Request fields#
+
+include::{snippets}/todos/createTodo/request-fields.adoc[]
+
+[red big]#Response fields#
+
+include::{snippets}/todos/createTodo/response-fields.adoc[]
+
+== [small]#할일 수정#
+
+[red big]#Overview#
+
+----
+할일을 수정합니다.
+----
+
+[red big]#HTTP request#
+include::{snippets}/todos/updateTodo/http-request.adoc[]
+
+[red big]#HTTP response#
+include::{snippets}/todos/updateTodo/http-response.adoc[]
+
+[red big]#Path parameters#
+include::{snippets}/todos/updateTodo/path-parameters.adoc[]
+
+[red big]#Request fields#
+include::{snippets}/todos/updateTodo/request-fields.adoc[]
+
+[red big]#Response fields#
+include::{snippets}/todos/updateTodo/response-fields.adoc[]
+
+== [small]#할일 삭제#
+
+[red big]#Overview#
+
+----
+할일을 삭제합니다. 위임정보가 있으면 함께 삭제됩니다.
+----
+
+[red big]#HTTP request#
+include::{snippets}/todos/deleteTodo/http-request.adoc[]
+
+[red big]#HTTP response#
+
+include::{snippets}/todos/deleteTodo/http-response.adoc[]
+
+[red big]#Path parameters#
+
+include::{snippets}/todos/deleteTodo/path-parameters.adoc[]
+
+[red big]#Response fields#
+
+include::{snippets}/todos/deleteTodo/response-fields.adoc[]
+
+
+== [small]#할일 위임#
+
+[red big]#Overview#
+
+----
+할일을 다른 담당자에게 위임합니다.
+----
+
+[red big]#HTTP request#
+
+include::{snippets}/todos/assignTodo/http-request.adoc[]
+
+[red big]#HTTP response#
+
+include::{snippets}/todos/assignTodo/http-response.adoc[]
+
+[red big]#Path parameters#
+
+include::{snippets}/todos/assignTodo/path-parameters.adoc[]
+
+[red big]#Request fields#
+
+include::{snippets}/todos/assignTodo/request-fields.adoc[]
+
+[red big]#Response fields#
+
+include::{snippets}/todos/assignTodo/response-fields.adoc[]
+
+== [small]#위임된 할일 취소#
+
+[red big]#Overview#
+
+----
+위임받은 할일을 취소합니다.
+----
+
+[red big]#HTTP request#
+
+include::{snippets}/todos/assignCancelTodo/http-request.adoc[]
+
+[red big]#HTTP response#
+
+include::{snippets}/todos/assignCancelTodo/http-response.adoc[]
+
+[red big]#Path parameters#
+
+include::{snippets}/todos/assignCancelTodo/path-parameters.adoc[]
+
+[red big]#Response fields#
+
+include::{snippets}/todos/assignCancelTodo/response-fields.adoc[]
